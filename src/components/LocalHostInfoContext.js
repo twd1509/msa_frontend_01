@@ -9,7 +9,7 @@ export const LocalHostInfoContext = {
 
 let localhostIP = "52.79.76.146";
 export const LocalHostInfoContext = {
-common: `http://${localhostIP}:30002`,
-aianalysis: `http://${localhostIP}:30004`,
-aiRequest: `http://${localhostIP}:30005`
+common: `http://${localhostIP}:9090`,
+aianalysis: `http://${localhostIP}:9091`,
+aiRequest: `http://${localhostIP}:9092`
 }
