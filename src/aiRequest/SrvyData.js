@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import {Link, useParams, Navigate} from 'react-router-dom';
 import "../aiRequest/css/reqStyle.css";
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const params = new URLSearchParams(window.location.search);
 let groupNo = params.get("groupNo") == null ? '' : params.get("groupNo");
@@ -12,7 +13,7 @@ const SrvyData = () => {
 
     useEffect(() => {
         console.log("📌 React - API 요청 시작, groupNo:", groupNo);
-        fetch(`http://localhost:9193/api/SrvyData?groupNo=${groupNo}`, {
+        fetch(`${LocalHostInfoContext.aiRequest}/api/SrvyData?groupNo=${groupNo}`, {
             method: 'GET'
         })
             .then(response => response.json())

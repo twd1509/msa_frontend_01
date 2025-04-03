@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import {Link, useParams, Navigate} from 'react-router-dom'
 import '../css/Ntc.css';
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const NtcReg = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -28,7 +29,7 @@ const NtcReg = () => {
     
     
     useEffect(() => {
-        fetch(`http://localhost:9191/api/ntc/get?no=${no}`)
+        fetch(`${LocalHostInfoContext.common}/api/ntc/get?no=${no}`)
         .then((res) => {
             if(no !== 0){
                 res.json().then(data => {
@@ -75,7 +76,7 @@ const NtcReg = () => {
                 uptId : memberInfo.email
             })
 
-            fetch('http://localhost:9191/api/ntc/reg', {
+            fetch(`${LocalHostInfoContext.common}/api/ntc/reg`, {
                 method: "POST",
                 credentials: 'include',
                 headers: {
@@ -94,7 +95,7 @@ const NtcReg = () => {
                 uptId : memberInfo.email
             })
 
-            fetch(`http://localhost:9191/api/ntc/update`, {
+            fetch(`${LocalHostInfoContext.common}/api/ntc/update`, {
                 method: "POST",
                 credentials: 'include',
                 headers: {

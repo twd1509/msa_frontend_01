@@ -1,6 +1,7 @@
 import { MemberInfoContext } from "../components/MemberInfoContext"; // 쿠키 정보가 들어있는 MemberInfoContext 임포트
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { LocalHostInfoContext } from "../components/LocalHostInfoContext";
 
 const RequirementCreate = () => {
   const memberInfo = useContext(MemberInfoContext); //쿠키 정보를 js객체 형태로 변수에 담기 { email:"문자열 값", grade: 숫자 값 } )
@@ -53,7 +54,7 @@ const RequirementCreate = () => {
       }
 
       const response = await fetch(
-        "http://localhost:3002/api/createRequirement",
+        `${LocalHostInfoContext.aianalysis}/api/createRequirement`,
         {
           method: "POST",
           body: formDataToSend,

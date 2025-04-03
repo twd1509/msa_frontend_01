@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { LocalHostInfoContext } from "../components/LocalHostInfoContext";
 
 const RequirementUpdate = () => {
   const { reqNo } = useParams();
@@ -22,7 +23,9 @@ const RequirementUpdate = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3002/api/getUpdateForm?reqNo=${reqNo}`);
+        const response = await fetch(
+          `${LocalHostInfoContext.aianalysis}/api/getUpdateForm?reqNo=${reqNo}`
+        );
         if (!response.ok) {
           throw new Error(`데이터 불러오기 실패: ${response.status}`);
         }
@@ -76,17 +79,23 @@ const RequirementUpdate = () => {
       formDataToSend.append("content", formData.content);
       formDataToSend.append("memId", formData.memId);
       formDataToSend.append("status", formData.status);
-      
+
       // ✅ 파일 제목 유지 (업로드하지 않으면 기존 파일 유지)
       if (formData.file) {
         formDataToSend.append("file", formData.file); // 새로운 파일 업로드
       }
-      formDataToSend.append("fileTitle", formData.file ? formData.file.name : formData.existingFile);
+      formDataToSend.append(
+        "fileTitle",
+        formData.file ? formData.file.name : formData.existingFile
+      );
 
-      const response = await fetch("http://localhost:3002/api/updateRequirement", {
-        method: "POST",
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        `${LocalHostInfoContext.aianalysis}/api/updateRequirement`,
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`수정 실패: ${response.status}`);
@@ -100,7 +109,7 @@ const RequirementUpdate = () => {
     } finally {
       setLoading(false);
     }
-};
+  };
 
   return (
     <div className="edit-form_jsh">
@@ -111,11 +120,23 @@ const RequirementUpdate = () => {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label>
           제목:
-          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
         </label>
         <label>
           내용:
-          <input type="text" name="content" value={formData.content} onChange={handleChange} required />
+          <input
+            type="text"
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+            required
+          />
         </label>
 
         <label>
@@ -125,14 +146,25 @@ const RequirementUpdate = () => {
 
         <label>
           파일 제목:
-          <input type="text" name="fileTitle" value={formData.fileTitle} onChange={handleChange} readOnly />
+          <input
+            type="text"
+            name="fileTitle"
+            value={formData.fileTitle}
+            onChange={handleChange}
+            readOnly
+          />
         </label>
 
         {/* ✅ 기존 파일 표시 */}
         {formData.existingFile && (
           <div>
-            <p>현재 업로드된 파일: 
-              <a href={`http://localhost:3002/api/uploads/${formData.existingFile}`} target="_blank" rel="noopener noreferrer">
+            <p>
+              현재 업로드된 파일:
+              <a
+                href={`${LocalHostInfoContext.aianalysis}/api/uploads/${formData.existingFile}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {formData.existingFile}
               </a>
             </p>
@@ -144,8 +176,16 @@ const RequirementUpdate = () => {
           <input type="file" name="file" onChange={handleFileChange} />
         </label>
 
-        <button type="submit" className="submit-btn_jsh">수정 완료</button>
-        <button type="button" className="cancel-btn_jsh" onClick={() => navigate(-1)}>취소</button>
+        <button type="submit" className="submit-btn_jsh">
+          수정 완료
+        </button>
+        <button
+          type="button"
+          className="cancel-btn_jsh"
+          onClick={() => navigate(-1)}
+        >
+          취소
+        </button>
       </form>
     </div>
   );

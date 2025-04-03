@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom'; 
 import "../aiRequest/css/reqStyle.css";
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const SrvyUpdate = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -20,7 +21,7 @@ const SrvyUpdate = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:9193/api/GetSurveyData/${email}/${groupNo}`, {
+                    `${LocalHostInfoContext.aiRequest}/api/GetSurveyData/${email}/${groupNo}`, {
                         method: "GET"
                     }
                 );
@@ -90,7 +91,7 @@ const SrvyUpdate = () => {
         console.log('전송할 데이터:', updatedData);
 
         try {
-            const response = await fetch(`http://localhost:9193/api/SrvyUpdate/${email}/${groupNo}`, {
+            const response = await fetch(`${LocalHostInfoContext.aiRequest}/api/SrvyUpdate/${email}/${groupNo}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json; charset=utf-8' },
                 body: JSON.stringify(updatedData),

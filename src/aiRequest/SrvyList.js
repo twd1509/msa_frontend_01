@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../aiRequest/css/reqStyle.css";
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const SrvyList = ({ email }) => {
     //const userEmail = email || "test1@naver.com"; // 이메일 임의 설정
@@ -16,7 +17,7 @@ const SrvyList = ({ email }) => {
 
     useEffect(() => {
         if (surveyNo) {
-            fetch(`http://localhost:9193/api/GetSurveyResults?surveyNo=${surveyNo}`)
+            fetch(`${LocalHostInfoContext.aiRequest}/api/GetSurveyResults?surveyNo=${surveyNo}`)
                 .then(response => response.json())
                 .then(data => setSurveyResults(data))
                 .catch(error => console.error('Error fetching survey results:', error));
@@ -25,7 +26,7 @@ const SrvyList = ({ email }) => {
     
     const fetchSurveyData = () => {
         if (email) {
-            fetch(`http://localhost:9193/api/GetSurveyData?email=${email}`)
+            fetch(`${LocalHostInfoContext.aiRequest}/api/GetSurveyData?email=${email}`)
                 .then(response => response.json())
                 .then(data => setSurveyList(data))
                 .catch(error => console.error('Error fetching survey list:', error));
@@ -41,7 +42,7 @@ const SrvyList = ({ email }) => {
     const handleDelete = async (email, surveyNo) => {
         if (window.confirm("정말 삭제하시겠습니까?")) {
             try {
-                const response = await fetch(`http://localhost:9193/api/SrvyDelete?email=${email}&surveyNo=${surveyNo}`, {
+                const response = await fetch(`${LocalHostInfoContext.aiRequest}/api/SrvyDelete?email=${email}&surveyNo=${surveyNo}`, {
                 method: "POST"
             });
 

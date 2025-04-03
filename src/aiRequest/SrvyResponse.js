@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import "../aiRequest/css/reqStyle.css";
 import { MemberInfoContext } from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const SrvyResponse = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -20,7 +21,7 @@ const SrvyResponse = () => {
             return;
         }
 
-        fetch(`http://localhost:9193/api/SrvyResponse/check?email=${email}&groupNo=${groupNo}`)
+        fetch(`${LocalHostInfoContext.aiRequest}/api/SrvyResponse/check?email=${email}&groupNo=${groupNo}`)
             .then(response => {
                 if (response.status === 403) {
                     alert("이미 응답한 설문입니다.");
@@ -44,7 +45,7 @@ const SrvyResponse = () => {
         }
 
     // UserGetSrvy API 호출
-        fetch(`http://localhost:9193/api/UserGetSrvy?email=${email}&groupNo=${groupNo}`)
+        fetch(`${LocalHostInfoContext.aiRequest}/api/UserGetSrvy?email=${email}&groupNo=${groupNo}`)
         .then(response => response.json())
         .then(data => {
             console.log('Received survey data:', data);
@@ -71,7 +72,7 @@ const SrvyResponse = () => {
         };
 
         console.log('Responses:', formData);
-        fetch('http://localhost:9193/api/SrvyResponse', {
+        fetch('${LocalHostInfoContext.aiRequest}/api/SrvyResponse', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'

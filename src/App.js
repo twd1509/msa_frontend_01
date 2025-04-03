@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./css/App.css";
 import "./css/requirement.css";
@@ -16,6 +16,7 @@ import MbrIndex from "./mbr/MbrIndex";
 import MbrJoin from "./mbr/MbrJoin";
 import MbrDtl from "./mbr/MbrDtl";
 import { MemberInfoContext } from "./components/MemberInfoContext";
+import { LocalHostInfoContext } from "./components/LocalHostInfoContext";
 import CodeReg from "./commonCode/CodeReg";
 import MstCodeIndex from "./commonCode/MstCodeIndex";
 import DtlCodeIndex from "./commonCode/DtlCodeIndex";
@@ -35,6 +36,7 @@ import UserGetSrvy from "./aiRequest/UserGetSrvy";
 import GetSurveyData from "./aiRequest/GetSurveyData";
 import SrvyData from "./aiRequest/SrvyData";
 
+export const AppContext = "";
 function App() {
   const [memberInfo, setMemberinfo] = useState({
     email: "",
@@ -43,7 +45,7 @@ function App() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:9191/api/mbr/cookiechk", {
+    fetch(LocalHostInfoContext.common + "/api/mbr/cookiechk", {
       method: "GET",
       credentials: "include", // 쿠키를 포함하도록 설정
       headers: {
@@ -65,7 +67,7 @@ function App() {
             loading: false
           }));
 
-          fetch("http://localhost:9191/api/mbr/logout", {
+          fetch(`${LocalHostInfoContext.common}/api/mbr/logout`, {
             method: "POST",
             credentials: "include", // 쿠키를 포함하도록 설정
             headers: {

@@ -2,6 +2,7 @@ import React, {useState,useEffect, useContext} from 'react'
 import {Link, useParams, Navigate } from 'react-router-dom'
 import '../css/menureg.css';
 import { MemberInfoContext } from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const MenuReg = () => {
     const memberInfo = useContext(MemberInfoContext);
@@ -26,7 +27,7 @@ const MenuReg = () => {
         });
 
     useEffect(() => {
-        fetch('http://localhost:9191/api/getmenu',{
+        fetch(`${LocalHostInfoContext.common}/api/getmenu`,{
             method:"POST",
             credentials: 'include', // 쿠키를 포함하도록 설정
             headers:{
@@ -92,9 +93,9 @@ const MenuReg = () => {
 
         let apiPath="";
         if(paramNo){
-            apiPath = "http://localhost:9191/api/menuupdate";
+            apiPath = `${LocalHostInfoContext.common}/api/menuupdate`;
         }else{
-            apiPath = "http://localhost:9191/api/menuform";
+            apiPath = `${LocalHostInfoContext.common}/api/menuform`;
         }
         
         fetch(apiPath,{

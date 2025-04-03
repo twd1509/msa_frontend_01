@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import {Link, Navigate} from 'react-router-dom'
 import '../css/menuindex.css';
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const MstCodeIndex = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -41,7 +42,7 @@ const MstCodeIndex = () => {
     formData.append('keyword', keyword);
 
     useEffect(() => {
-        fetch('http://localhost:9191/api/code/mstIndex', {
+        fetch(`${LocalHostInfoContext.common}/api/code/mstIndex`, {
             method:"POST",
             body : formData
         })
@@ -56,7 +57,7 @@ const MstCodeIndex = () => {
     const handleSubmit = (e, mstCd) => {
         if(window.confirm("삭제 하시겠습니까?")) {
             e.preventDefault();
-            fetch('http://localhost:9191/api/code/mstDelete', {
+            fetch(`${LocalHostInfoContext.common}/api/code/mstDelete`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=utf-8"

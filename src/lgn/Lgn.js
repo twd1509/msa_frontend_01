@@ -1,6 +1,7 @@
 import React,{ useState, useEffect, useContext } from 'react'
 import {Link} from 'react-router-dom'
 import '../css/lgn.css';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const Lgn = () => {
     const [selectedmbrNo, setSelectedMbrNo] = useState({mbrNo : 1}); // 기본값 설정
@@ -30,7 +31,7 @@ const Lgn = () => {
             alert('하나의 기관을 선택해 주세요.');
             return false;
         } else {
-            fetch('http://localhost:9191/api/mbr/lgn', {
+            fetch(`${LocalHostInfoContext.common}/api/mbr/lgn`, {
                 method: "POST",
                 credentials: 'include', // 쿠키를 포함하도록 설정
                 headers: {

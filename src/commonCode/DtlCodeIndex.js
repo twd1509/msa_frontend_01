@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import {Link, Navigate} from 'react-router-dom'
 import '../css/menuindex.css';
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const DtlCodeIndex = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -48,7 +49,7 @@ const DtlCodeIndex = () => {
     formData.append('mstCd', paramCode);
 
     useEffect(() => {
-        fetch('http://localhost:9191/api/code/dtlIndex', {
+        fetch(`${LocalHostInfoContext.common}/api/code/dtlIndex`, {
             method:"POST",
             body : formData
         })
@@ -63,7 +64,7 @@ const DtlCodeIndex = () => {
     const handleSubmit = (e, dtlCd) => {
         if(window.confirm("삭제 하시겠습니까?")) {
             e.preventDefault();
-            fetch('http://localhost:9191/api/code/dtlDelete', {
+            fetch(`${LocalHostInfoContext.common}/api/code/dtlDelete`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=utf-8"

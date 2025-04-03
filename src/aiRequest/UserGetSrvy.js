@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import "../aiRequest/css/reqStyle.css";
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const UserGetSrvy = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -22,7 +23,7 @@ const UserGetSrvy = () => {
     }, [location.search]);
 
     useEffect(() => {
-        fetch(`http://localhost:9193/api/SrvyResponse/check?email=${email}&groupNo=${groupNo}`)
+        fetch(`${LocalHostInfoContext.aiRequest}/api/SrvyResponse/check?email=${email}&groupNo=${groupNo}`)
             .then(response => {
                 if (response.status === 403) {
                     alert("이미 응답한 설문입니다.");
@@ -41,7 +42,7 @@ const UserGetSrvy = () => {
             if (!email || !groupNo) return; // 값이 없으면 실행 안 함
     
             try {
-                const response = await fetch(`http://localhost:9193/api/UserGetSrvy/${email}/${groupNo}`);
+                const response = await fetch(`${LocalHostInfoContext.aiRequest}/api/UserGetSrvy/${email}/${groupNo}`);
     
                 if (!response.ok) {
                     throw new Error(`네트워크 오류: ${response.status}`);
@@ -122,7 +123,7 @@ const UserGetSrvy = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:9193/api/SrvyResponse', {
+            const response = await fetch('${LocalHostInfoContext.aiRequest}/api/SrvyResponse', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

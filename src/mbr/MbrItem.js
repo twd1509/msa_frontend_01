@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const MbrItem = ({ mbr = {}, index }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(window.confirm("삭제 하시겠습니까?")) {
-            fetch('http://localhost:9191/api/mbr/mbrdelete',{
+            fetch(`${LocalHostInfoContext.common}/api/mbr/mbrdelete`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json; charset=utf-8"

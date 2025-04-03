@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../css/index.css";
+import { LocalHostInfoContext } from "./LocalHostInfoContext";
 
 const Home = () => {
   const [lctrRprsAdmin, setLctrRprsAdmin] = useState([]);
@@ -11,7 +12,7 @@ const Home = () => {
   let i = 1;
 
   useEffect(() => {
-    fetch("http://localhost:9191/api/ntc/main", {
+    fetch(`${LocalHostInfoContext.common}/api/ntc/main`, {
       method: "GET",
       credentials: "include",
     })

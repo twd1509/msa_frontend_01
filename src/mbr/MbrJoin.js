@@ -2,6 +2,7 @@ import React, {useState,useEffect,useContext} from 'react'
 import {Link, useParams, Navigate } from 'react-router-dom'
 import '../css/menureg.css';
 import {MemberInfoContext} from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const MbrJoin = () => {
     const memberInfo  = useContext(MemberInfoContext);
@@ -19,7 +20,7 @@ const MbrJoin = () => {
         
     useEffect(() => {
         if (!Mbremail) return; // email 값이 없으면 요청 안 보냄
-        fetch('http://localhost:9191/api/mbr/getmbr',{
+        fetch(`${LocalHostInfoContext.common}/api/mbr/getmbr`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json; charset=utf-8"
@@ -119,9 +120,9 @@ const MbrJoin = () => {
         
         let apiPath="";
         if(Mbremail){
-            apiPath = "http://localhost:9191/api/mbr/mbrupdate";
+            apiPath = `${LocalHostInfoContext.common}/api/mbr/mbrupdate`;
         }else{
-            apiPath = "http://localhost:9191/api/mbr/join";
+            apiPath = `${LocalHostInfoContext.common}/api/mbr/join`;
         }
         
         fetch(apiPath,{
@@ -189,7 +190,7 @@ const MbrJoin = () => {
     const handleSecession = (e) => {
         e.preventDefault();
         if(window.confirm("삭제 하시겠습니까?")) {
-            fetch('http://localhost:9191/api/mbr/mbrdelete',{
+            fetch(`${LocalHostInfoContext.common}/api/mbr/mbrdelete`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json; charset=utf-8"
@@ -201,7 +202,7 @@ const MbrJoin = () => {
                    
                     alert("삭제되었습니다.");
                     if(memberInfo.grade != 3){
-                        fetch("http://localhost:9191/api/mbr/logout", {
+                        fetch(`${LocalHostInfoContext.common}/api/mbr/logout`, {
                             method: "POST",
                             credentials: "include", // 쿠키를 포함하도록 설정
                             headers: {

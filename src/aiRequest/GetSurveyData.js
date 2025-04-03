@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import "../aiRequest/css/reqStyle.css";
 import {MemberInfoContext} from '../components/MemberInfoContext';
 import SrvyUpdate from '../aiRequest/SrvyUpdate'; // 수정 컴포넌트 가져오기
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const GetSurveyData = () => {
     const { email: paramEmail, groupNo } = useParams();
@@ -22,7 +23,7 @@ const GetSurveyData = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:9193/api/GetSurveyData/${email}/${groupNo}`, {
+                    `${LocalHostInfoContext.aiRequest}/api/GetSurveyData/${email}/${groupNo}`, {
                         method: "GET"
                     }
                 );

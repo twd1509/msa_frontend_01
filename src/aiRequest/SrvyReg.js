@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import {Link, useParams, Navigate} from 'react-router-dom'
 import "../aiRequest/css/reqStyle.css";
 import { MemberInfoContext } from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const SrvyReg = () => {
     const memberInfo = useContext(MemberInfoContext);
@@ -57,7 +58,7 @@ const SrvyReg = () => {
             }))
         };
 
-        fetch(`http://localhost:9193/api/SrvyReg`, {
+        fetch(`${LocalHostInfoContext.aiRequest}/api/SrvyReg`, {
             method: "POST",
             headers: { "Content-Type": "application/json; charset=utf-8" },
             body: JSON.stringify(formData)

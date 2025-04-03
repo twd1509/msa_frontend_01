@@ -3,6 +3,7 @@ import {Link, Navigate} from 'react-router-dom'
 import '../css/menuindex.css';
 import MenuItem from './MenuItem';
 import { MemberInfoContext } from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const MenuIndex = () => {
     const memberInfo = useContext(MemberInfoContext);
@@ -43,7 +44,7 @@ const MenuIndex = () => {
         setIndexOfFirstItem(indexOfFirstItem);
         setIsActive(number);
         setCurrentPage(number);
-        fetch('http://localhost:9191/api/menupagelist',{
+        fetch(`${LocalHostInfoContext.common}/api/menupagelist`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json; charset=utf-8"

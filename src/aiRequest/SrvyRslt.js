@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate, useLocation, Navigate } from "react-router-dom"; // ✅ 리디렉트 기능 추가
 import { MemberInfoContext } from "../components/MemberInfoContext"; // ✅ 로그인 정보 가져오기
 import "../aiRequest/css/reqStyle.css";
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const SrvyRslt = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const SrvyRslt = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:9193/api/SrvyRslt?groupNo=${groupNo}&memId=${email}`,
+      `${LocalHostInfoContext.aiRequest}/api/SrvyRslt?groupNo=${groupNo}&memId=${email}`,
       {
         method: "GET",
       }

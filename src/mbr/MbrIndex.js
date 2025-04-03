@@ -3,6 +3,7 @@ import {Link, Navigate} from 'react-router-dom'
 import '../css/Mbr.css';
 import MbrItem from './MbrItem';
 import { MemberInfoContext } from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const MbrIndex = () => {
     const memberInfo = useContext(MemberInfoContext);
@@ -64,7 +65,7 @@ const MbrIndex = () => {
         }
         setGradeSave(grade);
         
-        fetch('http://localhost:9191/api/mbr/index',{
+        fetch(`${LocalHostInfoContext.common}/api/mbr/index`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json; charset=utf-8"

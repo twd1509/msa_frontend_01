@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
+
 const MenuItem = (props) => {
     const { menu, index } = props;
     const {no,menuNm, menuLnkg,rlsMbrAuthrt,mngrPageRlsYn,userPageRlsYn,useYn} = props.menu;
@@ -13,7 +15,7 @@ const MenuItem = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(window.confirm("삭제 하시겠습니까?")) {
-            fetch('http://localhost:9191/api/menudelete',{
+            fetch(`${LocalHostInfoContext.common}/api/menudelete`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json; charset=utf-8"

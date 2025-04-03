@@ -1,6 +1,7 @@
 import { MemberInfoContext } from "../components/MemberInfoContext"; // 쿠키 정보가 들어있는 MemberInfoContext 임포트
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { LocalHostInfoContext } from "../components/LocalHostInfoContext";
 
 const RequirementView = () => {
   const memberInfo = useContext(MemberInfoContext); //쿠키 정보를 js객체 형태로 변수에 담기 { email:"문자열 값", grade: 숫자 값 } )
@@ -26,7 +27,7 @@ const RequirementView = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3002/api/getRequirementDetail?reqNo=${reqNo}`
+          `${LocalHostInfoContext.aianalysis}/api/getRequirementDetail?reqNo=${reqNo}`
         );
 
         if (!response.ok) {
@@ -42,7 +43,7 @@ const RequirementView = () => {
         // 이미지 URL 갱신 (캐시 방지를 위해 timestamp 추가)
         if (requestData.fileTitle) {
           setImageUrl(
-            `http://localhost:3002/uploads/${
+            `${LocalHostInfoContext.aianalysis}/uploads/${
               requestData.fileTitle
             }?timestamp=${new Date().getTime()}`
           );
@@ -61,7 +62,7 @@ const RequirementView = () => {
   useEffect(() => {
     if (requestData.fileTitle) {
       setImageUrl(
-        `http://localhost:3002/uploads/${
+        `${LocalHostInfoContext.aianalysis}/uploads/${
           requestData.fileTitle
         }?timestamp=${new Date().getTime()}`
       );
@@ -106,7 +107,7 @@ const RequirementView = () => {
                 <>
                   {/* ✅ 다운로드 링크 */}
                   <a
-                    href={`http://localhost:3002/api/uploads/${requestData.fileTitle}`}
+                    href={`${LocalHostInfoContext.aianalysis}/api/uploads/${requestData.fileTitle}`}
                     download
                     className="file-link"
                     target="_blank"
@@ -117,7 +118,7 @@ const RequirementView = () => {
 
                   {/* ✅ 캐싱 방지를 위한 timestamp 추가 */}
                   <img
-                    src={`http://localhost:3002/api/uploads/${
+                    src={`${LocalHostInfoContext.aianalysis}/api/uploads/${
                       requestData.fileTitle
                     }?timestamp=${new Date().getTime()}`}
                     alt="첨부 이미지"
@@ -133,7 +134,10 @@ const RequirementView = () => {
       </table>
 
       <div className="button-group">
-        <button onClick={() => navigate(`/requirements/RequirementList`)} className="button_jsh">
+        <button
+          onClick={() => navigate(`/requirements/RequirementList`)}
+          className="button_jsh"
+        >
           목록
         </button>
         {memberInfo.grade === 3 && (

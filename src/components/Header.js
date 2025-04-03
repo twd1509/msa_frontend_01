@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "../css/Header.css";
 import { MemberInfoContext } from "./MemberInfoContext";
+import { LocalHostInfoContext } from "./LocalHostInfoContext";
 
 const Header = () => {
   const memberInfo = useContext(MemberInfoContext);
@@ -10,7 +11,7 @@ const Header = () => {
   let i = 1;
 
   useEffect(() => {
-    fetch("http://localhost:9191/api/menu/header", {
+    fetch(`${LocalHostInfoContext.common}/api/menu/header`, {
       method: "GET",
       credentials: "include", // 쿠키를 포함하도록 설정
     })
@@ -21,7 +22,7 @@ const Header = () => {
   }, []);
 
   const logout = () => {
-    fetch("http://localhost:9191/api/mbr/logout", {
+    fetch(`${LocalHostInfoContext.common}/api/mbr/logout`, {
       method: "POST",
       credentials: "include", // 쿠키를 포함하도록 설정
       headers: {

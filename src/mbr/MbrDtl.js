@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams, Navigate} from 'react-router-dom'
 import '../css/Ntc.css';
 import { MemberInfoContext } from "../components/MemberInfoContext";
+import { LocalHostInfoContext } from "../components/LocalHostInfoContext";
 
 
 const NtcDtl = () => {
@@ -21,7 +22,7 @@ const NtcDtl = () => {
 
     useEffect(() => {
             if (!Mbremail) return; // email 값이 없으면 요청 안 보냄
-            fetch('http://localhost:9191/api/mbr/getmbr',{
+            fetch(`${LocalHostInfoContext.common}/api/mbr/getmbr`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json; charset=utf-8"
@@ -55,7 +56,7 @@ const NtcDtl = () => {
     const handleSubmit = (e) => {
         if(window.confirm("삭제 하시겠습니까?")) {
             e.preventDefault();
-            fetch('http://localhost:9191/api/mbr/mbrdelete', {
+            fetch(`${LocalHostInfoContext.common}/api/mbr/mbrdelete`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=utf-8"

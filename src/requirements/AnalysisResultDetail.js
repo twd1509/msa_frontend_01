@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MemberInfoContext } from "../components/MemberInfoContext";
+import { LocalHostInfoContext } from "../components/LocalHostInfoContext";
 import "../css/AnlsRsltsDetail.css"; // 스타일 시트 임포트
 
 const AnlsRsltsDetail = () => {
@@ -20,7 +21,7 @@ const AnlsRsltsDetail = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:3002/api/anlsRslt/detail/read`,
+        `${LocalHostInfoContext.aianalysis}/api/anlsRslt/detail/read`,
         {
           method: "POST",
           headers: {
@@ -63,7 +64,7 @@ const AnlsRsltsDetail = () => {
   const handleEmailButtonClick = async () => {
     setEmailSending(true);
     try {
-      const response = await fetch(`http://localhost:3002/api/email/send`, {
+      const response = await fetch(`${LocalHostInfoContext.aianalysis}/api/email/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import React, {useState,useEffect, useContext} from 'react'
 import {Link, useParams, Navigate } from 'react-router-dom'
 import '../css/menureg.css';
 import { MemberInfoContext } from '../components/MemberInfoContext';
+import { LocalHostInfoContext } from '../components/LocalHostInfoContext';
 
 const CodeReg = () => {
     const memberInfo = useContext(MemberInfoContext);
@@ -26,7 +27,7 @@ const CodeReg = () => {
     useEffect(() => {
         const mstCodeFetch = async () => {
             try {
-                const response = await fetch('http://localhost:9191/api/code/getMstCode');
+                const response = await fetch(`${LocalHostInfoContext.common}/api/code/getMstCode`);
                 const data = await response.json();
                 setMstCodeReg(data);
                 if(paramType) { 
@@ -43,9 +44,9 @@ const CodeReg = () => {
             setUpdateCode(true);
             let getCodeUrl = "";
             if(paramType == "dtl") {
-                getCodeUrl = `http://localhost:9191/api/code/getDtlByCode`;
+                getCodeUrl = `${LocalHostInfoContext.common}/api/code/getDtlByCode`;
             } else {
-                getCodeUrl = `http://localhost:9191/api/code/getMstByCode`;
+                getCodeUrl = `${LocalHostInfoContext.common}/api/code/getMstByCode`;
             }
             const codeFetch = async () => {
                 try {
@@ -124,9 +125,9 @@ const CodeReg = () => {
         let apiPath="";
 
         if(paramCode && paramType){
-            apiPath = "http://localhost:9191/api/code/modify";
+            apiPath = `${LocalHostInfoContext.common}/api/code/modify`;
         }else{
-            apiPath = "http://localhost:9191/api/code/reg";
+            apiPath = `${LocalHostInfoContext.common}/api/code/reg`;
         }
         
         fetch(apiPath,{

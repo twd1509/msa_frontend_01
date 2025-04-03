@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {Link, Navigate} from 'react-router-dom'
 import '../css/Ntc.css';
 import { MemberInfoContext } from "../components/MemberInfoContext";
+import { LocalHostInfoContext } from "../components/LocalHostInfoContext";
 
 
 const NtcDtl = () => {
@@ -11,7 +12,7 @@ const NtcDtl = () => {
     const no = params.get("no");
 
     useEffect(() => {
-        fetch(`http://localhost:9191/api/ntc/get?no=${no}`)
+        fetch(`${LocalHostInfoContext.common}/api/ntc/get?no=${no}`)
         .then((res) => res.json())
         .then((res) => {
             setNtc(res);
@@ -21,7 +22,7 @@ const NtcDtl = () => {
     const handleSubmit = (e, no) => {
         if(window.confirm("삭제 하시겠습니까?")) {
             e.preventDefault();
-            fetch('http://localhost:9191/api/ntc/delete', {
+            fetch(`${LocalHostInfoContext.common}/api/ntc/delete`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=utf-8"
