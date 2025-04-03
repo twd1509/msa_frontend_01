@@ -1,0 +1,201 @@
+/* body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+h1 {
+    font-size: 24px;
+} */
+.ntc-container {
+    /* width: 500px; */
+    width: 80%;
+    margin: 20px auto;
+    /* border: 2px solid #e0e0e0; */
+    background-color: #ffffff;
+    padding: 20px;
+    /* border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+}
+.ntc-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+.ntc-info {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #f0f0f0;
+    padding: 8px;
+    color: #555;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.ntc-info span {
+    margin-left: 10px;
+}
+button {
+    padding: 10px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin: 5px;
+}
+.ntc-content {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    margin: 15px 0;
+    min-height: 120px;
+    border-radius: 5px;
+}
+.ntc-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.ntc-buttons button {
+    width: 150px;
+    padding: 12px 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin: 5px; 
+}
+label {
+    display: inline-flex;
+    align-items: center; /* 세로 정렬 */
+    gap: 5px; /* 체크박스와 라벨 사이 간격 */
+}
+button:hover {
+    background-color: #0056b3;
+}
+.ntc-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    table-layout: fixed;
+}
+.ntc-form-table th, .ntc-form-table td {
+    background-color: #f9f9f9;
+    padding: 12px;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+.ntc-form-table th {
+    background-color: #d9d9d9;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+.ntc-form-table td {
+    padding: 8px; /* 간격 조정 */
+    font-size: 16px;
+}
+.ntc-form-table input[type="text"],
+.ntc-form-table textarea {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px; /* 체크박스와 텍스트 간격 조정 */
+    vertical-align: middle; /* 체크박스 중앙 정렬 */
+}
+.ntc-buttons button:nth-child(1) {
+    background-color: #007bff;
+}
+.ntc-buttons button:nth-child(1):hover {
+    background-color: #0056b3;
+}
+.ntc-buttons button:nth-child(2) {
+    background-color: #007bff;
+}
+.ntc-buttons button:nth-child(2):hover {
+    background-color: #0056b3;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 0 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end; /* 우측 정렬 */
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+}
+
+.search-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+}
+
+.search-input {
+    width: 250px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #666;
+    outline: none;
+}
+
+.search-button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white; /* 흰색 글씨 */
+    font-size: 16px; /* 글자 크기 줄이기 */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background: #555;
+}

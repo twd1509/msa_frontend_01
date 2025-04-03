@@ -1,0 +1,92 @@
+/* AnlsRsltsDetail.css */
+
+.container_smj {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title_smj {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.details_smj {
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.details_smj p {
+  margin: 5px 0;
+}
+
+.results-title_smj {
+  font-size: 20px;
+  margin: 20px 0 10px;
+  color: #333;
+}
+
+.results-table_smj {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.results-table_smj th,
+.results-table_smj td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.results-table_smj th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.buttons_smj {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button_smj {
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#backButton {
+  background-color: #007bff; /* 파란색 */
+}
+
+#surveyButton {
+  background-color: #28a745; /* 초록색 */
+}
+
+#emailButton {
+  background-color: #17a2b8; /* 청록색 */
+}
+
+#emailButton_sending {
+  background-color: #6c757d; /* 회색 */
+}
+
+.button_smj:hover {
+  filter: brightness(0.9);
+}
+
+.loading_smj,
+.error_smj,
+.no-data_smj {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+}

@@ -1,0 +1,263 @@
+/* 공통 컨테이너 스타일 */
+.course-list_jsh, .edit-form_jsh, .create-form_jsh, .requirement-view-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.requirement-title, .course-list_jsh h1, .create-form_jsh h2, .edit-form_jsh h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 공통 테이블 스타일 */
+.table_jsh {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table_jsh th, .table_jsh td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table_jsh thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.table_jsh th {
+    width: 20%;
+    text-align: left;
+}
+
+.table_jsh tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table_jsh tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background 0.3s ease-in-out;
+}
+
+/* 공통 버튼 스타일 */
+.button_jsh, .create-btn_jsh, .submit-btn_jsh, .cancel-btn_jsh {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+}
+
+/* 버튼 색상 및 호버 효과 */
+.button_jsh, .submit-btn_jsh {
+    background-color: #4CAF50;
+}
+
+.button_jsh:hover, .submit-btn_jsh:hover {
+    background-color: #45a049;
+}
+
+.create-btn_jsh {
+    background-color: #007bff;
+}
+
+.create-btn_jsh:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn_jsh {
+    background-color: #f44336;
+}
+
+.cancel-btn_jsh:hover {
+    background-color: #d32f2f;
+}
+
+/* 설정 버튼 그룹 */
+.setting-links_jsh {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.setting-links_jsh button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+/* 개별 버튼 색상 */
+.setting-btn_modify { background-color: #2196F3; } /* 수정 */
+.setting-btn_delete { background-color: #ff0000; } /* 삭제 */
+.setting-btn_analysis { background-color: #FF9800; } /* AI 분석 */
+.setting-btn_email { background-color: #F44336; } /* 이메일 전송 */
+.setting-btn_result { background-color: #25201f; } /* 결과 확인 */
+
+/* 설정 버튼(이메일) 전송중_smj */
+#setting-btn_email_sending{ background-color: #ce372c; }
+/* 버튼 호버 효과 */
+.setting-links_jsh button:hover {
+    opacity: 0.8;
+}
+
+/* 폼 스타일 */
+.edit-form_jsh, .create-form_jsh {
+    width: 50%;
+}
+
+.edit-form_jsh label, .create-form_jsh label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.edit-form_jsh input, .edit-form_jsh select, 
+.create-form_jsh input, .create-form_jsh select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 파일 업로드 버튼 */
+.create-form_jsh input[type="file"] {
+    padding: 5px;
+}
+
+/* 하단 버튼 영역 */
+.submit-section_jsh {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* 파일 링크 및 이미지 스타일 */
+.file-link, .youtube-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.file-link:hover, .youtube-link:hover {
+    text-decoration: underline;
+}
+
+.file-preview {
+    max-width: 300px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 상태 메시지 스타일 */
+.loading-text, .error-text, .no-data-text {
+    text-align: center;
+    font-size: 18px;
+}
+
+.loading-text {
+    color: #777;
+}
+
+.error-text {
+    color: red;
+}
+
+.no-data-text {
+    color: #777;
+}
+
+/* 페이지당 표시할 요청 개수 선택 */
+.showCnt_jsh {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.itemsPerPage_jsh {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.itemsPerPage_jsh:hover {
+    border-color: #4CAF50;
+}
+
+/* 페이지 네비게이션 */
+.pagination_jsh {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.pagination_jsh button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination_jsh button.active {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.pagination_jsh button:hover {
+    background-color: #ddd;
+}
+
+/* 버튼 비활성화 */
+.pagination_jsh button:disabled {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}
+
+.search-container_jsh {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+.search-input_jsh {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-input_jsh:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

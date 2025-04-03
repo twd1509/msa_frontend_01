@@ -1,0 +1,69 @@
+/* footer*/
+.footer-container {
+margin: 0;
+border-top: 1px solid rgba(217, 217, 217, 1.00);
+background-color: rgba(255, 255, 255, 1.00);
+display: flex;
+flex-direction: row;
+column-gap: 16px;
+width: calc(100% - 64px);
+flex-wrap: wrap;
+align-items: flex-start;
+justify-content: flex-start;
+padding: 32px;
+}
+
+.icon-section {
+width: 262px;
+display: flex;
+flex-direction: column;
+row-gap: 24px;
+align-items: flex-start;
+}
+
+.icon-wrapper {
+display: flex;
+flex-direction: row;
+column-gap: 16px;
+align-items: center;
+}
+
+.icon {
+width: 24px;
+height: 24px;
+}
+
+.text-section {
+width: 262px;
+display: flex;
+flex-direction: column;
+row-gap: 12px;
+align-items: center;
+}
+
+.use-cases {
+display: flex;
+flex-direction: column;
+row-gap: 10px;
+width: 100%;
+padding: 0 0 16px 0;
+align-items: center;
+}
+
+.use-cases-title {
+color: rgba(30, 30, 30, 1.00);
+font-family: Inter;
+font-weight: 600;
+font-size: 16px;
+white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+.ui-design {
+width: 89px;
+height: 22px;
+color: rgba(30, 30, 30, 1.00);
+font-family: Inter;
+font-weight: 400;
+font-size: 16px;
+white-space: nowrap; /* 줄바꿈 방지 */
+}
